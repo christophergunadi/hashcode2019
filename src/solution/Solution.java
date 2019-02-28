@@ -8,26 +8,26 @@ import java.util.List;
 
 public class Solution {
 
-  private List<Slide> solution;
+  private List<Slide> slideshow;
 
   public Solution() {
-    solution = new ArrayList<>();
+    slideshow = new ArrayList<>();
   }
 
-  public void addSlideToSolution(Slide slide) {
-    solution.add(slide);
+  public void addSlideToSlideShow(Slide slide) {
+    slideshow.add(slide);
   }
 
   public int calculateScore() {
-    int numSlides = solution.size();
+    int numSlides = slideshow.size();
     if (numSlides <= 1) return 0;
 
     int score = 0;
-    Slide prevSlide = solution.get(0);
+    Slide prevSlide = slideshow.get(0);
 
     for (int i = 1; i < numSlides; i++) {
-      score += prevSlide.calculateInterest(solution.get(i));
-      prevSlide = solution.get(i);
+      score += prevSlide.calculateInterest(slideshow.get(i));
+      prevSlide = slideshow.get(i);
     }
 
     return score;
@@ -35,11 +35,11 @@ public class Solution {
 
   public void writeSolutionToFile() {
     try {
-    BufferedWriter writer = new BufferedWriter(new FileWriter("solution.txt"));
-      writer.write(solution.size());
+    BufferedWriter writer = new BufferedWriter(new FileWriter("slideshow.txt"));
+      writer.write(slideshow.size());
       writer.newLine();
 
-      for (Slide slide : solution) {
+      for (Slide slide : slideshow) {
         writer.write(slide.toString());
         writer.newLine();
       }

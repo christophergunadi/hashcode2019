@@ -23,18 +23,18 @@ public class Slide {
 
   public int calculateInterest(Slide slide) {
     int commonTags = 0;
-    int uniqueTags = 0;
+    int uniqueTagsInOtherSlide = 0;
     for (String tag : slide.getTags()) {
       if (tags.contains(tag)) {
         commonTags++;
       } else {
-        uniqueTags++;
+        uniqueTagsInOtherSlide++;
       }
     }
 
-    uniqueTags += tags.size() - commonTags;
+    int uniqueTagsInThisSlide = tags.size() - commonTags;
 
-    return Math.min(commonTags, uniqueTags);
+    return Math.min(Math.min(commonTags, uniqueTagsInOtherSlide), uniqueTagsInThisSlide);
   }
 
   @Override
