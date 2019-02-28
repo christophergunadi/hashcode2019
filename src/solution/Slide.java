@@ -1,5 +1,6 @@
 package solution;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Slide implements Comparable {
@@ -12,6 +13,7 @@ public class Slide implements Comparable {
   public Slide(Photo photo) {
     this.photo1 = photo;
     containsHorizontal = true;
+    tags = new HashSet<>();
 
     tags.addAll(photo.getTags());
   }
@@ -19,6 +21,7 @@ public class Slide implements Comparable {
   public Slide(Photo photo1, Photo photo2) {
     this.photo1 = photo1;
     this.photo2 = photo2;
+    tags = new HashSet<>();
 
     tags.addAll(photo1.getTags());
     tags.addAll(photo2.getTags());

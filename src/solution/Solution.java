@@ -5,16 +5,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.TreeSet;
 
 public class Solution {
 
   private List<Slide> slideshow;
-  private TreeSet<Slide> workingSlides;
+  private PriorityQueue<Slide> workingSlides;
 
   public Solution(List<Photo> verticalPhotos, List<Photo> horizontalPhotos) {
     slideshow = new ArrayList<>();
-    workingSlides = new ArrayList<>();
+    workingSlides = new PriorityQueue<>();
 
     for (Photo photo: horizontalPhotos) {
       workingSlides.add(new Slide(photo));
@@ -31,12 +32,31 @@ public class Solution {
   }
 
   public void generateSlideshow() {
-
+//    Slide slide1 = null;
+//    Slide slide2 = null;
+//    if (workingSlides.size() > 1) {
+//      slide1 = workingSlides.poll();
+//      slide2 = workingSlides.poll();
+//    }
+//    
+//    while (!workingSlides.isEmpty()) {
+//      Slide nextSlide = workingSlides.poll();
+//      
+//      int interest1 = slide1.calculateInterest(nextSlide);
+//      int interest2 = slide2.calculateInterest(nextSlide);
+//      
+//      if (interest1 > interest2) {
+//        slideshow.add(slide2);
+//        slideshow.add(slide1);
+//      } else {
+//        slideshow.add
+//      }
+//      
+//    }
+    
+    slideshow = new ArrayList<>(workingSlides);
   }
-
-  public void addSlideToSlideShow(Slide slide) {
-    slideshow.add(slide);
-  }
+  
 
   public int calculateScore() {
     int numSlides = slideshow.size();
@@ -56,7 +76,7 @@ public class Solution {
   public void writeSolutionToFile() {
     try {
     BufferedWriter writer = new BufferedWriter(new FileWriter("slideshow.txt"));
-      writer.write(slideshow.size());
+      writer.write("" + slideshow.size());
       writer.newLine();
 
       for (Slide slide : slideshow) {
