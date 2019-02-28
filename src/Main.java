@@ -11,6 +11,7 @@ public class Main {
   private static List<Photo> horizontalPhotos;
   
   public static void main(String[] args) throws FileNotFoundException {
+    int totalScore = 0;
     for (int n = 0; n < args.length; n++) {
       verticalPhotos = new ArrayList<>();
       horizontalPhotos = new ArrayList<>();
@@ -40,8 +41,11 @@ public class Main {
     /* Next */
       Solution solution = new Solution(verticalPhotos, horizontalPhotos, args[n]);
       solution.generateSlideshow();
-      System.out.println("Score for " + args[n] + " is: " + solution.calculateScore());
+      int score = solution.calculateScore();
+      System.out.println("Score for " + args[n] + " is: " + score);
+      totalScore += score;
       solution.writeSolutionToFile();
     }
+    System.out.println("Total score: " + totalScore);
   }
 }

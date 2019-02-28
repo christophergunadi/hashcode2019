@@ -2,7 +2,7 @@ package solution;
 
 import java.util.Set;
 
-public class Photo {
+public class Photo implements Comparable {
 
   private int id;
   boolean isVertical;
@@ -21,6 +21,13 @@ public class Photo {
   public int getId() {
     return id;
   }
+  
+  public int calculateTotalTagsWithPhoto(Photo other) {
+    Set<String> tagsFromOther = other.getTags();
+    tagsFromOther.addAll(tags);
+    
+    return tagsFromOther.size();
+  }
 
   @Override
   public String toString() {
@@ -33,5 +40,19 @@ public class Photo {
     sb.append(tags.toString());
     
     return sb.toString();
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    Photo photo = (Photo) o;
+    int numTags = photo.getTags().size();
+
+    if (numTags > tags.size()) {
+      return -1;
+    } else if (numTags == tags.size()) {
+      return 0;
+    } else {
+      return 1;
+    }
   }
 }
