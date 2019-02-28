@@ -13,6 +13,7 @@ public class Solution {
 
   public Solution(List<Photo> verticalPhotos, List<Photo> horizontalPhotos) {
     slideshow = new ArrayList<>();
+    workingSlides = new ArrayList<>();
 
     for (Photo photo: horizontalPhotos) {
       workingSlides.add(new Slide(photo));

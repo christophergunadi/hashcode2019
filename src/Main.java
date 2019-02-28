@@ -35,8 +35,8 @@ public class Main {
     }
 
     /* Next */
-    Solution solution = new Solution();
-    solution.generateSlideshow(photos);
+    Solution solution = new Solution(verticalPhotos, horizontalPhotos);
+    solution.generateSlideshow();
     System.out.println("Score is: " + solution.calculateScore());
     solution.writeSolutionToFile();
   }
