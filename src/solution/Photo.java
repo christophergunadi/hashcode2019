@@ -28,7 +28,7 @@ public class Photo {
     sb.append("photo");
     sb.append(id);
     sb.append(" ");
-    sb.append(isVertical);
+    sb.append(isVertical ? "V" : "H");
     sb.append(" ");
     sb.append(tags.toString());
     

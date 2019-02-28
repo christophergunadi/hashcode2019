@@ -6,8 +6,9 @@ import java.util.*;
 import solution.Solution;
 
 public class Main {
-
-  private static List<Photo> photos = new ArrayList<>();
+  
+  private static List<Photo> verticalPhotos = new ArrayList<>();
+  private static List<Photo> horizontalPhotos = new ArrayList<>();
   
   public static void main(String[] args) throws FileNotFoundException {
     /* Initialise program */
@@ -26,7 +27,11 @@ public class Main {
         tags.add(scan.next());
       }
       
-      photos.add(new Photo(i, isVertical, tags));
+      if (isVertical) {
+        verticalPhotos.add(new Photo(i, isVertical, tags));
+      } else {
+        horizontalPhotos.add(new Photo(i, isVertical, tags));
+      }
     }
 
     /* Next */
