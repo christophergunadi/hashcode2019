@@ -1,6 +1,7 @@
 package solution;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +13,13 @@ public class Solution {
 
   private List<Slide> slideshow;
   private PriorityQueue<Slide> workingSlides;
+  private String filename;
 
-  public Solution(List<Photo> verticalPhotos, List<Photo> horizontalPhotos) {
+  public Solution(List<Photo> verticalPhotos, List<Photo> horizontalPhotos, String filename) {
+    int start = filename.lastIndexOf("/");
+    int end   = filename.lastIndexOf(".");
+    this.filename = filename.substring(start + 1, end);
+
     slideshow = new ArrayList<>();
     workingSlides = new PriorityQueue<>();
 
@@ -75,7 +81,7 @@ public class Solution {
 
   public void writeSolutionToFile() {
     try {
-    BufferedWriter writer = new BufferedWriter(new FileWriter("slideshow.txt"));
+      BufferedWriter writer = new BufferedWriter(new FileWriter("test_output/" + filename + ".sol"));
       writer.write("" + slideshow.size());
       writer.newLine();
 
