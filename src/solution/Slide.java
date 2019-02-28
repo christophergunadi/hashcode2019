@@ -1,20 +1,27 @@
 package solution;
 
-import java.util.List;
 import java.util.Set;
 
 public class Slide {
 
-  private List<Photo> photos;
+  private Photo photo1;
+  private Photo photo2;
   private Set<String> tags;
+  private boolean containsHorizontal;
 
-  public Slide(List<Photo> photos) {
-    this.photos = photos;
+  public Slide(Photo photo) {
+    this.photo1 = photo;
+    containsHorizontal = true;
 
-    for (Photo photo : photos) {
-      tags.addAll(photo.getTags());
-    }
+    tags.addAll(photo.getTags());
+  }
 
+  public Slide(Photo photo1, Photo photo2) {
+    this.photo1 = photo1;
+    this.photo2 = photo2;
+
+    tags.addAll(photo1.getTags());
+    tags.addAll(photo2.getTags());
   }
 
   public Set<String> getTags() {
@@ -39,10 +46,10 @@ public class Slide {
 
   @Override
   public String toString() {
-    if (photos.size() == 1) {
-      return "" + photos.get(0).getId();
+    if (containsHorizontal) {
+      return "" + photo1.getId();
     } else {
-      return photos.get(0).getId() + " " + photos.get(1).getId();
+      return photo1.getId() + " " + photo2.getId();
     }
   }
 

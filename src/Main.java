@@ -3,6 +3,7 @@ import solution.Photo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import solution.Solution;
 
 public class Main {
 
@@ -27,7 +28,11 @@ public class Main {
       
       photos.add(new Photo(i, isVertical, tags));
     }
-    
+
     /* Next */
+    Solution solution = new Solution();
+    solution.generateSlideshow(photos);
+    System.out.println("Score is: " + solution.calculateScore());
+    solution.writeSolutionToFile();
   }
 }

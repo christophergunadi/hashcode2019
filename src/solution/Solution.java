@@ -9,9 +9,27 @@ import java.util.List;
 public class Solution {
 
   private List<Slide> slideshow;
+  private List<Slide> workingSlides;
 
-  public Solution() {
+  public Solution(List<Photo> verticalPhotos, List<Photo> horizontalPhotos) {
     slideshow = new ArrayList<>();
+
+    for (Photo photo: horizontalPhotos) {
+      workingSlides.add(new Slide(photo));
+    }
+
+    groupVerticalPhotos(verticalPhotos);
+  }
+
+  private void groupVerticalPhotos(List<Photo> photos) {
+    int numSlides = photos.size() / 2;
+    for (int i = 0; i < numSlides; i++) {
+      workingSlides.add(new Slide(photos.get(2 * i), photos.get(2 * i + 1)));
+    }
+  }
+
+  public void generateSlideshow() {
+
   }
 
   public void addSlideToSlideShow(Slide slide) {

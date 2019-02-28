@@ -5,7 +5,7 @@ import java.util.Set;
 public class Photo {
 
   private int id;
-  private boolean isVertical;
+  boolean isVertical;
   private Set<String> tags;
 
   public Photo(int id, boolean isVertical, Set<String> tags) {
