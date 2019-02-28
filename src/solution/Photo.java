@@ -18,4 +18,8 @@ public class Photo {
     return tags;
   }
 
+  public int getId() {
+    return id;
+  }
+  
 }
