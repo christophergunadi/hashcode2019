@@ -7,11 +7,13 @@ import solution.Solution;
 
 public class Main {
   
-  private static List<Photo> verticalPhotos = new ArrayList<>();
-  private static List<Photo> horizontalPhotos = new ArrayList<>();
+  private static List<Photo> verticalPhotos;
+  private static List<Photo> horizontalPhotos;
   
   public static void main(String[] args) throws FileNotFoundException {
     for (int n = 0; n < args.length; n++) {
+      verticalPhotos = new ArrayList<>();
+      horizontalPhotos = new ArrayList<>();
     /* Initialise program */
       String filename = args[n];
       Scanner scan = new Scanner(new File(filename));
