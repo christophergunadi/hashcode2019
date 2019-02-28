@@ -5,11 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Solution {
 
   private List<Slide> slideshow;
-  private List<Slide> workingSlides;
+  private TreeSet<Slide> workingSlides;
 
   public Solution(List<Photo> verticalPhotos, List<Photo> horizontalPhotos) {
     slideshow = new ArrayList<>();

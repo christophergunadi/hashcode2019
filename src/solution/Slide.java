@@ -2,7 +2,7 @@ package solution;
 
 import java.util.Set;
 
-public class Slide {
+public class Slide implements Comparable {
 
   private Photo photo1;
   private Photo photo2;
@@ -50,6 +50,21 @@ public class Slide {
       return "" + photo1.getId();
     } else {
       return photo1.getId() + " " + photo2.getId();
+    }
+  }
+
+
+  @Override
+  public int compareTo(Object o) {
+    Slide slide = (Slide) o;
+    int numTags = slide.getTags().size();
+
+    if (numTags > tags.size()) {
+      return -1;
+    } else if (numTags == tags.size()) {
+      return 0;
+    } else {
+      return 1;
     }
   }
 
