@@ -21,5 +21,17 @@ public class Photo {
   public int getId() {
     return id;
   }
-  
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("photo");
+    sb.append(id);
+    sb.append(" ");
+    sb.append(isVertical);
+    sb.append(" ");
+    sb.append(tags.toString());
+    
+    return sb.toString();
+  }
 }
